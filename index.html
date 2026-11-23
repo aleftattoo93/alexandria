@@ -1,0 +1,568 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alexandria — Preservando o Conhecimento</title>
+
+    <meta name="description" content="Alexandria — Uma biblioteca dedicada à preservação do conhecimento humano.">
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #11110f;
+            color: #d8d0c0;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+        }
+
+        :root {
+            --gold: #b39a69;
+            --gold-light: #d2bd91;
+            --dark: #11110f;
+            --text: #d8d0c0;
+            --muted: #898477;
+        }
+
+        /* NAVEGAÇÃO */
+
+        header {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            padding: 35px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            letter-spacing: 5px;
+            color: var(--gold-light);
+        }
+
+        nav {
+            display: flex;
+            gap: 35px;
+        }
+
+        nav a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--gold-light);
+        }
+
+        /* PRIMEIRA SEÇÃO */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 25px 80px;
+            position: relative;
+            background:
+                radial-gradient(ellipse at center, #242117 0%, #11110f 65%);
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .eyebrow {
+            color: var(--gold);
+            font-size: 11px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-bottom: 35px;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(65px, 12vw, 130px);
+            font-weight: 400;
+            letter-spacing: 10px;
+            color: #e2d6bd;
+        }
+
+        .hero-line {
+            width: 80px;
+            height: 1px;
+            background-color: var(--gold);
+            margin: 35px auto;
+        }
+
+        .hero-description {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(21px, 3vw, 30px);
+            line-height: 1.6;
+            color: #b8ad9a;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .hero-quote {
+            margin-top: 65px;
+            color: var(--gold-light);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            font-style: italic;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--muted);
+            font-size: 10px;
+            letter-spacing: 3px;
+        }
+
+        /* SEÇÕES */
+
+        section.content-section {
+            padding: 120px 10%;
+        }
+
+        .section-label {
+            color: var(--gold);
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(40px, 6vw, 65px);
+            font-weight: 400;
+            color: #e2d6bd;
+            margin-bottom: 40px;
+        }
+
+        .section-text {
+            max-width: 850px;
+            font-size: 15px;
+            line-height: 2.1;
+            color: #aaa395;
+        }
+
+        .manifesto {
+            background-color: #171713;
+            border-top: 1px solid #302b21;
+            border-bottom: 1px solid #302b21;
+        }
+
+        .manifesto-text {
+            max-width: 850px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 23px;
+            line-height: 2;
+            color: #c9c0ae;
+        }
+
+        .manifesto-text p {
+            margin-bottom: 25px;
+        }
+
+        .manifesto-final {
+            margin-top: 55px;
+            color: var(--gold-light);
+            font-style: italic;
+            font-size: 27px;
+        }
+
+        /* PRINCÍPIOS */
+
+        .principles {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 50px;
+            margin-top: 70px;
+        }
+
+        .principle {
+            border-top: 1px solid #5a4b30;
+            padding-top: 25px;
+        }
+
+        .principle h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 26px;
+            font-weight: 400;
+            color: var(--gold-light);
+            margin-bottom: 15px;
+        }
+
+        .principle p {
+            font-size: 13px;
+            line-height: 1.9;
+            color: #918b7e;
+        }
+
+        /* FUTURO */
+
+        .future {
+            text-align: center;
+            background:
+                radial-gradient(ellipse at center, #211e17 0%, #11110f 70%);
+        }
+
+        .future .section-text {
+            margin: auto;
+        }
+
+        .future-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 30px;
+            color: var(--gold-light);
+            font-style: italic;
+            margin-top: 60px;
+        }
+
+        /* RODAPÉ */
+
+        footer {
+            padding: 40px 8%;
+            border-top: 1px solid #302b21;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        footer p {
+            color: #716c61;
+            font-size: 10px;
+            letter-spacing: 2px;
+        }
+
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 4px;
+            color: var(--gold);
+            font-size: 18px;
+        }
+
+        /* CELULARES */
+
+        @media (max-width: 768px) {
+
+            header {
+                padding: 25px;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav {
+                gap: 18px;
+            }
+
+            nav a {
+                font-size: 9px;
+                letter-spacing: 1px;
+            }
+
+            .hero h1 {
+                letter-spacing: 5px;
+            }
+
+            .hero-quote {
+                font-size: 18px;
+            }
+
+            section.content-section {
+                padding: 85px 8%;
+            }
+
+            .principles {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .manifesto-text {
+                font-size: 20px;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">ALEXANDRIA</div>
+
+        <nav>
+            <a href="#manifesto">Manifesto</a>
+            <a href="#mission">Missão</a>
+            <a href="#principles">Princípios</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- INTRODUÇÃO -->
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <div class="eyebrow">
+                    Preservação do conhecimento humano
+                </div>
+
+                <h1>ALEXANDRIA</h1>
+
+                <div class="hero-line"></div>
+
+                <p class="hero-description">
+                    Uma biblioteca construída para preservar
+                    o conhecimento humano e mantê-lo acessível
+                    às gerações futuras.
+                </p>
+
+                <p class="hero-quote">
+                    "O conhecimento não deveria desaparecer."
+                </p>
+
+            </div>
+
+            <div class="scroll-indicator">
+                DESCUBRA A ALEXANDRIA ↓
+            </div>
+
+        </section>
+
+        <!-- MANIFESTO -->
+
+        <section class="content-section manifesto" id="manifesto">
+
+            <div class="section-label">
+                Nossa essência
+            </div>
+
+            <h2 class="section-title">
+                Manifesto
+            </h2>
+
+            <div class="manifesto-text">
+
+                <p>
+                    O conhecimento é uma das maiores heranças da humanidade.
+                    Ele atravessa séculos, civilizações, guerras,
+                    gerações e fronteiras.
+                </p>
+
+                <p>
+                    Ainda assim, inúmeros livros desaparecem,
+                    documentos são esquecidos, histórias deixam
+                    de ser contadas e conhecimentos deixam de
+                    chegar às pessoas.
+                </p>
+
+                <p>
+                    Alexandria nasce da convicção de que o conhecimento
+                    merece ser preservado, e de que o acesso à história,
+                    à cultura e às ideias não deveria ser privilégio de poucos.
+                </p>
+
+                <p>
+                    Não buscamos determinar o que as pessoas devem pensar.
+                    Queremos permitir que elas leiam, investiguem,
+                    comparem, questionem e tirem suas próprias conclusões.
+                </p>
+
+                <p>
+                    Preservamos o antigo, acolhemos o novo,
+                    documentamos o desconhecido e valorizamos
+                    aquilo que corre o risco de desaparecer.
+                </p>
+
+                <p class="manifesto-final">
+                    Nenhum livro deveria se perder simplesmente
+                    porque o mundo deixou de se lembrar dele.
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- MISSÃO -->
+
+        <section class="content-section" id="mission">
+
+            <div class="section-label">
+                Nosso propósito
+            </div>
+
+            <h2 class="section-title">
+                Uma missão que<br>atravessa gerações.
+            </h2>
+
+            <p class="section-text">
+                Reunir, preservar, organizar e tornar acessível
+                o conhecimento humano, reduzindo as barreiras
+                entre as pessoas e aquilo que a humanidade aprendeu,
+                descobriu, escreveu e registrou ao longo de sua existência.
+
+                <br><br>
+
+                Alexandria não pertence a uma época, idioma,
+                cultura ou área de conhecimento. Seu propósito
+                é preservar aquilo que merece sobreviver ao tempo
+                e permitir que as próximas gerações tenham acesso
+                à herança intelectual da humanidade.
+            </p>
+
+        </section>
+
+        <!-- PRINCÍPIOS -->
+
+        <section class="content-section" id="principles">
+
+            <div class="section-label">
+                Nossos fundamentos
+            </div>
+
+            <h2 class="section-title">
+                Princípios
+            </h2>
+
+            <div class="principles">
+
+                <div class="principle">
+                    <h3>Liberdade de investigação</h3>
+                    <p>
+                        O direito de ler, pesquisar, questionar
+                        e formar suas próprias conclusões.
+                    </p>
+                </div>
+
+                <div class="principle">
+                    <h3>Preservação</h3>
+                    <p>
+                        O conhecimento deve sobreviver
+                        a falhas, mudanças e gerações.
+                    </p>
+                </div>
+
+                <div class="principle">
+                    <h3>Transparência</h3>
+                    <p>
+                        Origem, alterações, critérios
+                        e limitações devem ser documentados.
+                    </p>
+                </div>
+
+                <div class="principle">
+                    <h3>Neutralidade intelectual</h3>
+                    <p>
+                        O acervo não deve ser moldado
+                        para favorecer uma única ideologia
+                        ou narrativa.
+                    </p>
+                </div>
+
+                <div class="principle">
+                    <h3>Acesso universal</h3>
+                    <p>
+                        O conhecimento deve ser acessível
+                        independentemente da condição
+                        financeira ou localização.
+                    </p>
+                </div>
+
+                <div class="principle">
+                    <h3>Independência</h3>
+                    <p>
+                        O futuro da biblioteca não deve
+                        depender exclusivamente de uma
+                        única pessoa, empresa ou infraestrutura.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- FUTURO -->
+
+        <section class="content-section future">
+
+            <div class="section-label">
+                Um projeto para o futuro
+            </div>
+
+            <h2 class="section-title">
+                Ainda estamos<br>construindo.
+            </h2>
+
+            <p class="section-text">
+                Alexandria está em seu primeiro capítulo.
+
+                <br><br>
+
+                Estamos construindo as bases de um projeto
+                dedicado à preservação do conhecimento,
+                à liberdade de investigação e à criação
+                de uma biblioteca que possa sobreviver
+                ao tempo e às gerações.
+            </p>
+
+            <p class="future-quote">
+                Alexandria pertence ao futuro.
+            </p>
+
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+
+    <footer>
+
+        <div class="footer-logo">
+            ALEXANDRIA
+        </div>
+
+        <p>
+            O CONHECIMENTO DEVE SOBREVIVER AO TEMPO.
+        </p>
+
+        <p>
+            © 2026
+        </p>
+
+    </footer>
+
+</body>
+</html>
